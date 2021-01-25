@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BasicMarks renderLeaf diplays expected style 1`] = `
+exports[`BasicMarks renderLeaf displays expected style 1`] = `
 Object {
   "children": <strong>
     mockChild
@@ -11,7 +11,7 @@ Object {
 }
 `;
 
-exports[`BasicMarks renderLeaf diplays expected style 2`] = `
+exports[`BasicMarks renderLeaf displays expected style 2`] = `
 Object {
   "children": <em>
     mockChild
@@ -22,7 +22,7 @@ Object {
 }
 `;
 
-exports[`BasicMarks renderLeaf diplays expected style 3`] = `
+exports[`BasicMarks renderLeaf displays expected style 3`] = `
 Object {
   "children": <del>
     mockChild
@@ -33,7 +33,7 @@ Object {
 }
 `;
 
-exports[`BasicMarks renderLeaf diplays expected style 4`] = `
+exports[`BasicMarks renderLeaf displays expected style 4`] = `
 Object {
   "children": <q>
     mockChild
@@ -44,7 +44,7 @@ Object {
 }
 `;
 
-exports[`BasicMarks renderLeaf diplays expected style 5`] = `
+exports[`BasicMarks renderLeaf displays expected style 5`] = `
 Object {
   "children": <code>
     mockChild
@@ -55,7 +55,7 @@ Object {
 }
 `;
 
-exports[`BasicMarks renderLeaf diplays expected style 6`] = `
+exports[`BasicMarks renderLeaf displays expected style 6`] = `
 Object {
   "children": <div
     className="latex-editor "

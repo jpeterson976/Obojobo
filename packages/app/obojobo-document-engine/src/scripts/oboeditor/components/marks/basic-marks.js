@@ -1,5 +1,5 @@
 import React from 'react'
-import { Editor } from 'slate'
+import { Editor, Node } from 'slate'
 import { ReactEditor } from 'slate-react'
 
 import BoldIcon from '../../assets/bold-icon'
@@ -67,6 +67,11 @@ const BasicMarks = {
 			toggleMark(editor, format) {
 				const marks = Editor.marks(editor)
 				const isActive = marks[format] === true
+
+				const path = editor.selection.anchor.path.slice(0, 1)
+				const node = Node.get(editor, path)
+
+				if (node.type === 'ObojoboDraft.Chunks.HTML') return
 
 				if (isActive) {
 					Editor.removeMark(editor, format)

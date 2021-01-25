@@ -11,6 +11,10 @@ const MONOSPACE_MARK = 'monospace'
 const LATEX_MARK = '_latex'
 
 describe('BasicMarks', () => {
+	beforeEach(() => {
+		jest.resetAllMocks()
+	})
+
 	test('onKeyDown does not toggle mark if wrong key is pressed', () => {
 		const editor = {
 			toggleMark: jest.fn()
@@ -75,7 +79,7 @@ describe('BasicMarks', () => {
 		expect(editor.toggleMark).toHaveBeenCalledWith(LATEX_MARK)
 	})
 
-	test('renderLeaf diplays expected style', () => {
+	test('renderLeaf displays expected style', () => {
 		expect(
 			BasicMarks.plugins.renderLeaf({
 				leaf: { b: true },
@@ -162,6 +166,31 @@ describe('BasicMarks', () => {
 		BasicMarks.plugins.commands.toggleMark(editor, BOLD_MARK)
 
 		expect(Editor.addMark).toHaveBeenCalled()
+	})
+
+	test('toggleMarks ignores HTML chunks', () => {
+		jest.spyOn(Editor, 'addMark')
+		jest.spyOn(Editor, 'removeMark')
+
+		const editor = {
+			removeMark: jest.fn(),
+			addMark: jest.fn(),
+			children: [
+				{
+					type: 'ObojoboDraft.Chunks.HTML',
+					text: 'mockText'
+				}
+			],
+			selection: {
+				anchor: { path: [0], offset: 1 },
+				focus: { path: [0], offset: 1 }
+			}
+		}
+
+		BasicMarks.plugins.commands.toggleMark(editor, BOLD_MARK)
+
+		expect(Editor.addMark).not.toHaveBeenCalled()
+		expect(Editor.removeMark).not.toHaveBeenCalled()
 	})
 
 	test('the action in each mark calls editor.toggleMark', () => {
